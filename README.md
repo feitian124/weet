@@ -1,3 +1,3 @@
 # weet
 
-a [Sails](http://sailsjs.org) application
+Weet is a [sails](http://sailsjs.org) version of [nodeclub](https://github.com/cnodejs/nodeclub/).
