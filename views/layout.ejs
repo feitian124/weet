@@ -28,11 +28,21 @@
     -->
 
     <!--STYLES-->
+    <link rel="stylesheet" href="/styles/amazeui.css">
+    <link rel="stylesheet" href="/styles/homepage.css">
     <link rel="stylesheet" href="/styles/importer.css">
+    <link rel="stylesheet" href="/styles/login.css">
+    <link rel="stylesheet" href="/fonts/FontAwesome.otf">
+    <link rel="stylesheet" href="/fonts/fontawesome-webfont.eot">
+    <link rel="stylesheet" href="/fonts/fontawesome-webfont.svg">
+    <link rel="stylesheet" href="/fonts/fontawesome-webfont.ttf">
+    <link rel="stylesheet" href="/fonts/fontawesome-webfont.woff">
+    <link rel="stylesheet" href="/fonts/fontawesome-webfont.woff2">
     <!--STYLES END-->
   </head>
 
   <body>
+    <%- partial ('partials/header.ejs') %>
     <%- body %>
 
     <!--
@@ -55,6 +65,17 @@
             + Internationalize your client-side templates using a server-side
               stringfile before they're served.
     -->
+
+    <!--[if lt IE 9]>
+    <script src="http://libs.baidu.com/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+    <script src="/js/dependencies/amazeui/amazeui.ie8polyfill.min.js"></script>
+    <![endif]-->
+
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!--<![endif]-->
+
 
     <!--TEMPLATES-->
     
@@ -85,6 +106,7 @@
 
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/js/dependencies/amazeui/amazeui.js"></script>
     <!--SCRIPTS END-->
   </body>
 </html>

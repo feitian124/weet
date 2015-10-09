@@ -5,6 +5,7 @@
   "description": "a Sails application",
   "keywords": [],
   "dependencies": {
+    "amazeui": "^2.4.2",
     "bcrypt": "~0.8.0",
     "ejs": "~0.8.4",
     "grunt": "0.4.2",
