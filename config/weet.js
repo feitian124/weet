@@ -6,5 +6,9 @@
 
 module.exports.weet = {
   name: 'Weet',
-  description: ''
+  description: '一个简单易用的跨屏社交社区 ',
+  nav: {
+    '主页': '/',
+    '关于': '/about'
+  }
 };
