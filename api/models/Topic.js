@@ -14,7 +14,27 @@ module.exports = {
     content: {
       type: 'string',
       required: true
+    },
+    author: {
+      model: 'user'
+    },
+    replyCount: {
+      type: 'integer',
+      defaultsTo: 0
+    },
+    replyCount: {
+      type: 'integer',
+      defaultsTo: 0
+    },
+    visitCount: {
+      type: 'integer',
+      defaultsTo: 0
+    },
+    last_reply_by: {
+      type: 'string'
+    },
+    last_reply_at: {
+      type: 'datetime'
     }
   }
 };
-
