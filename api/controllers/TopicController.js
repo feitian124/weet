@@ -7,7 +7,9 @@
 
 module.exports = {
   index: function (req, res) {
-    Topic.find().exec(function(err, records) {
+    Topic.find()
+    .populate('author')
+    .exec(function(err, records) {
       if (err) {
         return res.send(400);
       } else {
