@@ -1,16 +1,18 @@
 <% _.each(topics, function(topic){ %>
-  <article class="am-g am-g-fixed am-g-collapse topic-list">
-    <div class="am-u-sm-1">
-      <a href="#">
-        <img class="am-comment-avatar" src="https://ruby-china-files.b0.upaiyun.com/user/big_avatar/1141.jpg"/>
-      </a>
-    </div>
-    <div class="am-u-sm-10">
-      <div class="am-text-lg title"><a href="/topic/<%= topic.id %>"><%= topic.title %></a></div>
-      <div class="am-text-sm meta"><a href="#">作者</a> • <a href="#">回复者</a> 20 分钟之前</div>
-    </div>
-    <div class="am-u-sm-1">
-      <span class="am-badge am-round">1/10</span>
-    </div>
-  </article>
+<article class="am-g am-g-fixed am-g-collapse topic-list">
+  <div class="am-u-sm-1">
+    <a href="#">
+      <img class="am-comment-avatar" src="https://ruby-china-files.b0.upaiyun.com/user/big_avatar/1141.jpg"/>
+    </a>
+  </div>
+  <div class="am-u-sm-10">
+    <div class="am-text-lg title"><a href="/topic/<%= topic.id %>"><%= topic.title %></a></div>
+    <div class="am-text-sm meta">
+      <a href="#"><%= topic.author.loginname %></a> •
+      <a href="#">回复者</a> 20 分钟之前</div>
+  </div>
+  <div class="am-u-sm-1">
+    <span class="am-badge am-round">1/10</span>
+  </div>
+</article>
 <% }); %>
