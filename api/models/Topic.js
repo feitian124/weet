@@ -30,6 +30,10 @@ module.exports = {
       type: 'integer',
       defaultsTo: 0
     },
+    replies: {
+      collection: 'reply',
+      via: 'topic'
+    },
     last_reply_by: {
       type: 'string'
     },

@@ -29,6 +29,10 @@ module.exports = {
       collection: 'topic',
       via: 'author'
     },
+    replies: {
+      collection: 'reply',
+      via: 'author'
+    },
     toJSON: function() {
       var obj = this.toObject();
       delete obj.password;
