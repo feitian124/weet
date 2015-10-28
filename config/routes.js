@@ -36,10 +36,10 @@ module.exports.routes = {
 
   'get /login': { view: 'login' },
   'post /login': 'AuthController.login',
-
   '/logout': 'AuthController.logout',
-
   'get /signup': { view: 'signup' },
+
+  'get /topic/:id': 'TopicController.show',
 
   'get /about': { view: 'about' }
 

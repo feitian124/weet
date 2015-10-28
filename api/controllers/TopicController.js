@@ -19,6 +19,21 @@ module.exports = {
         });
       }
     });
-  }
+  },
+  show: function (req, res) {
+    Topic.findOne({id: req.param('id')})
+    .populate('author')
+    .exec(function(err, record) {
+      if (err) {
+        console.log(err);
+        return res.send(400);
+      } else {
+        return res.view({
+          topic: record
+        });
+      }
+    });
+  },
+
 };
 
