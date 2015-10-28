@@ -8,8 +8,8 @@
   <div class="am-u-sm-10">
     <div class="am-text-lg title"><a href="/topic/<%= topic.id %>"><%= topic.title %></a></div>
     <div class="am-text-sm meta">
-      <a href="#"><%= topic.author.loginname %></a> •
-      <a href="#">回复者</a> <%= fromNow(topic.createdAt) %></div>
+      <a href="#"><%= topic.author.loginname %></a> • 最后回复 
+      <a href="#"><%= topic.last_reply_by %></a> <%= fromNow(topic.last_reply_at) %></div>
   </div>
   <div class="am-u-sm-1">
     <span class="am-badge am-round">1/10</span>

@@ -11,6 +11,7 @@ module.exports = {
     .populate('author')
     .exec(function(err, records) {
       if (err) {
+        console.log(err);
         return res.send(400);
       } else {
         return res.view({
