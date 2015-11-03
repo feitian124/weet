@@ -1,0 +1,15 @@
+body {
+  /* background-color: #e1e1e1; */
+  font-family: "Helvetica Neue","Luxi Sans","DejaVu Sans",Tahoma,"Hiragino Sans GB",STHeiti!important;
+}
+.header {
+  text-align: center;
+}
+.header h1 {
+  font-size: 200%;
+  color: #333;
+  margin-top: 30px;
+}
+.header p {
+  font-size: 14px;
+}
