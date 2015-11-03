@@ -34,10 +34,10 @@ module.exports = {
       collection: 'reply',
       via: 'topic'
     },
-    last_reply_by: {
+    lastReplyBy: {
       type: 'string'
     },
-    last_reply_at: {
+    lastReplyAt: {
       type: 'datetime'
     }
   }

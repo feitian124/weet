@@ -9,7 +9,7 @@
     <div class="am-text-lg title"><a href="/topic/<%= topic.id %>"><%= topic.title %></a></div>
     <div class="am-text-sm meta">
       <a href="#"><%= topic.author.loginname %></a> • 最后回复 
-      <a href="#"><%= topic.last_reply_by %></a> <%= fromNow(topic.last_reply_at) %></div>
+      <a href="#"><%= topic.lastReplyBy %></a> <%= fromNow(topic.lastReplyAt) %></div>
   </div>
   <div class="am-u-sm-1">
     <span class="am-badge am-round">1/10</span>
