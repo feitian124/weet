@@ -15,43 +15,23 @@
 <br/>
 
 <% _.each(topic.replies, function(reply){ %>
-  <%= reply %>
+  <article class="am-container am-comment">
+    <a href="">
+      <img class="am-comment-avatar" src="https://ruby-china-files.b0.upaiyun.com/user/big_avatar/1141.jpg"/>
+    </a>
+
+    <div class="am-comment-main">
+      <header class="am-comment-hd">
+        <!--<h3 class="am-comment-title">评论标题</h3>-->
+        <div class="am-comment-meta"> <!-- 评论元数据 -->
+          <a href="#link-to-user" class="am-comment-author">feitian124</a>
+          评论于 <time datetime=""> <%= fromNow(reply.createdAt) %> </time>
+        </div>
+      </header>
+
+      <div class="am-comment-bd"><%= reply.content %></div>
+    </div>
+  </article>
 <% }); %>
-
-<article class="am-container am-comment"> <!-- 评论容器 -->
-  <a href="">
-    <img class="am-comment-avatar" src="https://ruby-china-files.b0.upaiyun.com/user/big_avatar/1141.jpg"/> <!-- 评论者头像 -->
-  </a>
-
-  <div class="am-comment-main"> <!-- 评论内容容器 -->
-    <header class="am-comment-hd">
-      <!--<h3 class="am-comment-title">评论标题</h3>-->
-      <div class="am-comment-meta"> <!-- 评论元数据 -->
-        <a href="#link-to-user" class="am-comment-author">feitian124</a> <!-- 评论者 -->
-        评论于 <time datetime=""> 6天前 </time>
-      </div>
-    </header>
-
-    <div class="am-comment-bd"> 不错不错真的不错哦 </div> <!-- 评论内容 -->
-  </div>
-</article>
-
-<article class="am-container am-comment"> <!-- 评论容器 -->
-  <a href="">
-    <img class="am-comment-avatar" src="https://ruby-china-files.b0.upaiyun.com/user/big_avatar/1141.jpg"/> <!-- 评论者头像 -->
-  </a>
-
-  <div class="am-comment-main"> <!-- 评论内容容器 -->
-    <header class="am-comment-hd">
-      <!--<h3 class="am-comment-title">评论标题</h3>-->
-      <div class="am-comment-meta"> <!-- 评论元数据 -->
-        <a href="#link-to-user" class="am-comment-author">feitian124</a> <!-- 评论者 -->
-        评论于 <time datetime=""> 6天前 </time>
-      </div>
-    </header>
-
-    <div class="am-comment-bd"> 不错不错真的不错哦 </div> <!-- 评论内容 -->
-  </div>
-</article>
 
 <br/>
