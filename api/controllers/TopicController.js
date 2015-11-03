@@ -23,7 +23,9 @@ module.exports = {
   show: function (req, res) {
     Topic.findOne({id: req.param('id')})
     .populate('author')
+    .populate('replies')
     .exec(function(err, record) {
+      console.log(record);
       if (err) {
         console.log(err);
         return res.send(400);

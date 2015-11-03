@@ -14,6 +14,10 @@
 </div>
 <br/>
 
+<% _.each(topic.replies, function(reply){ %>
+  <%= reply %>
+<% }); %>
+
 <article class="am-container am-comment"> <!-- 评论容器 -->
   <a href="">
     <img class="am-comment-avatar" src="https://ruby-china-files.b0.upaiyun.com/user/big_avatar/1141.jpg"/> <!-- 评论者头像 -->
