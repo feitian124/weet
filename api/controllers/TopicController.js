@@ -8,14 +8,26 @@
 module.exports = {
   index: function (req, res) {
     Topic.find()
+    .paginate({page: req.param('page'), limit: 5})
     .populate('author')
     .exec(function(err, records) {
       if (err) {
         console.log(err);
         return res.send(400);
       } else {
-        return res.view({
-          topics: records
+        Topic.count().exec(function(err, total) {
+          if (err) {
+            console.log(err);
+            return res.send(400);
+          } else {
+            return res.view({
+              topics: records,
+              pager: {
+                total: Math.ceil(total/5),
+                current: req.param('page') || 1
+              }
+            });
+          }
         });
       }
     });
