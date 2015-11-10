@@ -1,7 +1,11 @@
 <ul class="am-pagination am-pagination-centered">
   <li><a href="/topic?page=1">&laquo;</a></li>
   <% for(var i=1; i <= pager.total; i++ ) {%>
-    <li><a href="/topic?page=<%= i %>"><%= i %></a></li>
+    <% if(pager.current == i) { %>
+      <li class="am-active"><a href="/topic?page=<%= i %>"><%= i %></a></li>
+    <% } else { %>
+      <li><a href="/topic?page=<%= i %>"><%= i %></a></li>
+    <% } %>
   <% } %>
   <li><a href="/topic?page=<%= pager.total %>">&raquo;</a></li>
 </ul>
