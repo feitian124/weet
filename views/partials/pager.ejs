@@ -1,11 +1,38 @@
 <ul class="am-pagination am-pagination-centered">
   <li><a href="/topic?page=1">&laquo;</a></li>
-  <% for(var i=1; i <= pager.total; i++ ) {%>
-    <% if(pager.current == i) { %>
-      <li class="am-active"><a href="/topic?page=<%= i %>"><%= i %></a></li>
-    <% } else { %>
-      <li><a href="/topic?page=<%= i %>"><%= i %></a></li>
+  <% if(pager.total>5 && (pager.current-1) >= 3) { %>
+    <li>...</li>
+  <% } %>
+
+  <% if(pager.current <= 3) { %>
+    <% for(var i=1; i <= pager.total && i<=5 ; i++ ) {%>
+      <% if(pager.current == i) { %>
+        <li class="am-active"><a href="/topic?page=<%= i %>"><%= i %></a></li>
+      <% } else { %>
+        <li><a href="/topic?page=<%= i %>"><%= i %></a></li>
+      <% } %>
     <% } %>
+  <% } else if(pager.current > 3 && (pager.total - pager.current)>=3) { %>
+    <% for(var i=pager.current-2; i <= pager.current+2; i++ ) {%>
+      <% if(pager.current == i) { %>
+        <li class="am-active"><a href="/topic?page=<%= i %>"><%= i %></a></li>
+      <% } else { %>
+        <li><a href="/topic?page=<%= i %>"><%= i %></a></li>
+      <% } %>
+    <% } %>
+  <% } else { %>
+    <% for(var i=pager.total-4; i <= pager.total; i++ ) {%>
+      <% if(pager.current == i) { %>
+        <li class="am-active"><a href="/topic?page=<%= i %>"><%= i %></a></li>
+      <% } else { %>
+        <li><a href="/topic?page=<%= i %>"><%= i %></a></li>
+      <% } %>
+    <% } %>
+  <% } %>
+
+
+  <% if(pager.total>5 && (pager.total-pager.current) >= 3) { %>
+    <li>...</li>
   <% } %>
   <li><a href="/topic?page=<%= pager.total %>">&raquo;</a></li>
 </ul>
