@@ -8,7 +8,7 @@
 module.exports = {
   index: function (req, res) {
     Topic.find()
-    .paginate({page: req.param('page'), limit: 5})
+    .paginate({page: req.param('page'), limit: sails.config.weet.limit})
     .populate('author')
     .exec(function(err, records) {
       if (err) {
@@ -23,7 +23,7 @@ module.exports = {
             return res.view({
               topics: records,
               pager: {
-                total: Math.ceil(total/5),
+                total: Math.ceil(total/sails.config.weet.limit),
                 current: req.param('page') || 1
               }
             });

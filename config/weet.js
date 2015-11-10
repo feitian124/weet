@@ -10,5 +10,7 @@ module.exports.weet = {
   nav: {
     '社区': '/topic',
     '关于': '/about'
-  }
+  },
+  // 分页每页数量
+  limit: 10
 };
