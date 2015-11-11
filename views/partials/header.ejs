@@ -21,8 +21,16 @@
 
       <% if(req.isAuthenticated()) { %>
         <div class="am-topbar-right">
-          <a href="/user/<%= req.user.id %>" class="am-btn am-topbar-btn am-btn-sm"><%= req.user.loginname %></a>
-          <a href="/logout" class="am-btn am-btn-secondary am-topbar-btn am-btn-sm"><span class="am-icon-user"></span> 登出</a>
+          <div class="am-dropdown" data-am-dropdown="{boundary: '.am-topbar'}">
+            <button class="am-btn am-btn-secondary am-topbar-btn am-btn-sm am-dropdown-toggle" data-am-dropdown-toggle>
+              </span><%= req.user.loginname %> <span class="am-icon-caret-down"></span>
+            </button>
+            <ul class="am-dropdown-content">
+              <li><a href="/topic/new">发布新帖</a></li>
+              <li><a href="/user/<%= req.user.id %>">编辑资料</a></li>
+              <li><a href="/logout">登出</a></li>
+            </ul>
+          </div>
         </div>
       <% } else { %>
         <div class="am-topbar-right">
