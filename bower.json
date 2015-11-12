@@ -1,0 +1,23 @@
+{
+  "name": "weet",
+  "version": "0.0.0",
+  "homepage": "https://github.com/feitian124/weet",
+  "authors": [
+    "feitian124 <feitian124@gmail.com>"
+  ],
+  "keywords": [
+    "weet"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "simplemde": "~1.8.1",
+    "amazeui": "~2.4.2"
+  }
+}
