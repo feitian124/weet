@@ -17,6 +17,7 @@
 var cssFilesToInject = [
   'styles/**/*.css',
   'bower_components/simplemde/dist/simplemde.min.css',
+  'bower_components/amazeui/dist/css/amazeui.css',
   'fonts/**/*'
 ];
 
@@ -33,6 +34,7 @@ var jsFilesToInject = [
 
   // bower js
   'bower_components/simplemde/dist/simplemde.min.js',
+  'bower_components/amazeui/dist/js/amazeui.js',
 
   // All of the rest of your client-side js files
   // will be injected here in no particular order.
