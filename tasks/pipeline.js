@@ -15,10 +15,11 @@
 // (if you're using LESS with the built-in default config, you'll want
 //  to change `assets/styles/importer.less` instead.)
 var cssFilesToInject = [
-  'styles/**/*.css',
-  'bower_components/simplemde/dist/simplemde.min.css',
+  'bower_components/font-awesome/fonts/*',
+  'bower_components/font-awesome/css/font-awesome.css',
   'bower_components/amazeui/dist/css/amazeui.css',
-  'fonts/**/*'
+  'bower_components/simplemde/dist/simplemde.min.css',
+  'styles/**/*.css'
 ];
 
 
