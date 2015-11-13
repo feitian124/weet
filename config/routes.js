@@ -39,6 +39,9 @@ module.exports.routes = {
   '/logout': 'AuthController.logout',
   'get /signup': { view: 'signup' },
 
+  'get /topic/new': { view: 'topic/new' },
+
+  // pleasei note routes order, this kind of catch all routes should be at last position
   'get /topic/:id': 'TopicController.show',
 
   'get /about': { view: 'about' }
