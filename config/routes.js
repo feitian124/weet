@@ -40,6 +40,7 @@ module.exports.routes = {
   'get /signup': { view: 'signup' },
 
   'get /topic/new': { view: 'topic/new' },
+  'post /topic/create': 'TopicController.create',
 
   // pleasei note routes order, this kind of catch all routes should be at last position
   'get /topic/:id': 'TopicController.show',

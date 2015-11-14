@@ -41,7 +41,6 @@ module.exports = {
     .populate('author')
     .populate('replies')
     .exec(function(err, record) {
-      console.log(record);
       if (err) {
         console.log(err);
         return res.send(400);
@@ -52,6 +51,25 @@ module.exports = {
       }
     });
   },
+  create: function (req, res) {
+    var params = _.merge(req.allParams(), {author: req.user.id});
+    console.log("TopicController.create:");
+    console.log(params);
 
+    Topic.create(params, function(err, topic) {
+      if (err) {
+        console.log(err);
+        req.session.flash = {
+          err: err
+        }
+        return res.redirect('/topic/new');
+      }
+
+      topic.save(function(err, topic) {
+        if (err) return next(err);
+        res.redirect('/topic/'+ topic.id);
+      })
+    })
+  }
 };
 
