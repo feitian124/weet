@@ -11,6 +11,7 @@
 
 module.exports.bootstrap = function(cb) {
 
+  var helpers = require('./helpers');
   //sails use express 3, use app.locals; express 4 should app.helpers
   sails.hooks.http.app.locals(helpers);
 
@@ -18,31 +19,3 @@ module.exports.bootstrap = function(cb) {
   // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
   cb();
 };
-
-
-/**
- * my custome view helpers
- */
-var moment = require('moment');
-moment.locale('zh-cn');
-
-var marked = require('marked');
-marked.setOptions({
-  renderer: new marked.Renderer(),
-  gfm: true,
-  tables: true,
-  breaks: false,
-  pedantic: false,
-  sanitize: true,
-  smartLists: true,
-  smartypants: false
-});
-
-var helpers = {
-    fromNow: function(date) {
-      return moment(date).fromNow();
-    },
-    markdown: function(md) {
-      return marked(md);
-    }
-}
