@@ -51,6 +51,39 @@ module.exports = {
       }
     });
   },
+  edit: function (req, res) {
+    Topic.findOne({id: req.param('id')})
+    .populate('author')
+    .exec(function(err, record) {
+      if (err) {
+        console.log(err);
+        return res.send(400);
+      } else {
+        return res.view({
+          topic: record
+        });
+      }
+    });
+  },
+  update: function (req, res) {
+    Topic.findOne({id: req.param('id')}, function(err, topic) {
+      if (err) {
+        console.log(err);
+        req.session.flash = {
+          err: err
+        }
+        return res.redirect('/topic/edit');
+      }
+
+      topic.title = req.param('title');
+      topic.content = req.param('content');
+
+      topic.save(function(err, topic) {
+        if (err) return next(err);
+        res.redirect('/topic/'+ topic.id);
+      })
+    })
+  },
   create: function (req, res) {
     var params = _.merge(req.allParams(), {author: req.user.id});
     console.log("TopicController.create:");
