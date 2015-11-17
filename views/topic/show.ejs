@@ -4,7 +4,7 @@
       <div class="am-text-xl"><%= topic.title %></div>
       <div class="am-text-sm">
         <a href="#"><%= topic.author.loginname %></a> 创建于 <%= fromNow(topic.createdAt) %>
-        <% if(topic.author.id === req.user.id ) {%>
+        <% if(req.user && topic.author.id === req.user.id ) {%>
           • <a href="/topic/<%= topic.id %>/edit"><span class="am-icon-edit am-icon-sm"></span></a>
           • <a href="#" class="delete"><span class="am-icon-trash am-icon-sm"></span></a>
         <% } %>

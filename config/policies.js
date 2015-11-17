@@ -29,6 +29,8 @@ module.exports.policies = {
   '*': true,
 
   'TopicController': {
+    index: true,
+    show: true,
     '*': 'isAuthenticated'
   },
 
