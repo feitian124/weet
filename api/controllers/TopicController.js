@@ -86,8 +86,6 @@ module.exports = {
   },
   create: function (req, res) {
     var params = _.merge(req.allParams(), {author: req.user.id});
-    console.log("TopicController.create:");
-    console.log(params);
 
     Topic.create(params, function(err, topic) {
       if (err) {
