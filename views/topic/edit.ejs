@@ -9,6 +9,7 @@
 
     <form class="am-form" action='/topic/update' method='post'>
       <input type="hidden" name="id" value="<%= topic.id %>"/>
+      <input type="hidden" id="origin_content" value="<%= topic.content %>"/>
       <p><input type="text" class="am-form-field am-radius" name="title" value="<%= topic.title %>"/></p>
 
         <div class="am-form-group">
