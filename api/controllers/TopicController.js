@@ -11,7 +11,7 @@ module.exports = {
     if(req.param('page')) {
      page = parseInt(req.param('page'));
     }
-    Topic.find()
+    Topic.find({ sort: 'id DESC' })
     .paginate({page: page, limit: sails.config.weet.limit})
     .populate('author')
     .exec(function(err, records) {
@@ -39,7 +39,7 @@ module.exports = {
   show: function (req, res) {
     Topic.findOne({id: req.param('id')})
     .populate('author')
-    .populate('replies')
+    .populate('replies', {sort: 'id DESC'})
     .exec(function(err, record) {
       if (err) {
         console.log(err);
