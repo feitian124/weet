@@ -34,11 +34,8 @@ module.exports = {
       collection: 'reply',
       via: 'topic'
     },
-    lastReplyBy: {
-      type: 'string'
-    },
-    lastReplyAt: {
-      type: 'datetime'
+    lastReply: {
+      model: 'reply'
     }
   }
 };

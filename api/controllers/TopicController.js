@@ -14,11 +14,16 @@ module.exports = {
     Topic.find({ sort: 'id DESC' })
     .paginate({page: page, limit: sails.config.weet.limit})
     .populate('author')
+    .populate('lastReply')
+    //.populate('lastReply.author')
+    //https://github.com/balderdashy/waterline/pull/1052
     .exec(function(err, records) {
       if (err) {
         console.log(err);
         return res.send(400);
       } else {
+        console.log(records);
+
         Topic.count().exec(function(err, total) {
           if (err) {
             console.log(err);
@@ -33,6 +38,7 @@ module.exports = {
             });
           }
         });
+
       }
     });
   },

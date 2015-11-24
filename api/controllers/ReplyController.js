@@ -20,7 +20,21 @@ module.exports = {
 
       reply.save(function(err, reply) {
         if (err) return next(err);
-        res.redirect('/topic/'+ req.param('topic'));
+
+        // update lastReply of the topic
+        Topic.findOne({id: req.param('topic')})
+        .exec(function(err, topic) {
+          if (err) {
+            console.log(err);
+            return res.send(400);
+          } else {
+            topic.lastReply = reply.id;
+            topic.save(function(err, topic) {
+              if (err) return next(err);
+              res.redirect('/topic/'+ topic.id);
+            });
+          }
+        });
       })
     })
   }
