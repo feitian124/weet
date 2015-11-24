@@ -22,23 +22,31 @@ module.exports = {
         console.log(err);
         return res.send(400);
       } else {
-        console.log(records);
-
         Topic.count().exec(function(err, total) {
           if (err) {
             console.log(err);
             return res.send(400);
           } else {
-            return res.view({
-              topics: records,
-              pager: {
-                total: Math.ceil(total/sails.config.weet.limit),
-                current: page
-              }
+            var lastReplies = _.pluck(records, 'lastReply');
+            lastReplies = _.compact(lastReplies);
+
+            User.find({id: _.pluck(lastReplies, 'author')}).exec(function(err, users ){
+              var repliers = _.indexBy(users, 'id');
+              _(records).forEach(function(record){
+                if(record.lastReply) {
+                  record.lastReply.author = repliers[record.lastReply.author];
+                }
+              });
+              return res.view({
+                topics: records,
+                pager: {
+                  total: Math.ceil(total/sails.config.weet.limit),
+                  current: page
+                }
+              });
             });
           }
         });
-
       }
     });
   },

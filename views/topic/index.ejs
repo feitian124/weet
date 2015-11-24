@@ -11,7 +11,7 @@
       <a href="#"><%= topic.author.loginname %></a>
       <% if(topic.lastReply) { %>
         • 最后回复 
-        <a href="/user/<%= topic.lastReply.author %>"><%= topic.lastReply.author %></a>
+        <a href="/user/<%= topic.lastReply.author.id %>"><%= topic.lastReply.author.loginname %></a>
         <%= fromNow(topic.lastReply.createdAt) %>
       <% } %>
     </div>
