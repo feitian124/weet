@@ -34,6 +34,7 @@ module.exports = {
               var repliers = _.indexBy(users, 'id');
               _(records).forEach(function(record){
                 if(record.lastReply) {
+                  delete repliers[record.lastReply.author].password;
                   record.lastReply.author = repliers[record.lastReply.author];
                 }
               });
