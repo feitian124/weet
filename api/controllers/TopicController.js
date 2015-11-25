@@ -47,21 +47,25 @@ module.exports = {
     }).catch(function(err){
       console.log(err);
       return res.send(400);
-    })
+    });
   },
   show: function (req, res) {
     Topic.findOne({id: req.param('id')})
     .populate('author')
     .populate('replies', {sort: 'id DESC'})
-    .exec(function(err, record) {
-      if (err) {
-        console.log(err);
-        return res.send(400);
-      } else {
-        return res.view({
-          topic: record
-        });
-      }
+    .then(function(topic){
+      topic.visitCount += 1;
+      var saved = topic.save().then(function(topic){
+        return topic;
+      });
+      return saved;
+    }).then(function(topic){
+      return res.view({
+        topic: topic
+      });
+    }).catch(function(err){
+      console.log(err);
+      return res.send(400);
     });
   },
   edit: function (req, res) {
