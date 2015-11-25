@@ -17,7 +17,11 @@
     </div>
   </div>
   <div class="am-u-sm-1">
-    <span class="am-badge am-round">0/<%= topic.visitCount %></span>
+    <span class="am-badge am-round">
+      <span data-am-popover="{content: '回帖数', trigger: 'hover'}"><%= topic.replyCount %></span>
+      /
+      <span data-am-popover="{content: '访问数', trigger: 'hover'}"><%= topic.visitCount %></span>
+    </span>
   </div>
 </article>
 <% }); %>
