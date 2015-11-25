@@ -17,39 +17,37 @@ module.exports = {
     .populate('lastReply')
     //.populate('lastReply.author')
     //https://github.com/balderdashy/waterline/pull/1052
-    .exec(function(err, records) {
-      if (err) {
-        console.log(err);
-        return res.send(400);
-      } else {
-        Topic.count().exec(function(err, total) {
-          if (err) {
-            console.log(err);
-            return res.send(400);
-          } else {
-            var lastReplies = _.pluck(records, 'lastReply');
-            lastReplies = _.compact(lastReplies);
-
-            User.find({id: _.pluck(lastReplies, 'author')}).exec(function(err, users ){
-              var repliers = _.indexBy(users, 'id');
-              _(records).forEach(function(record){
-                if(record.lastReply) {
-                  delete repliers[record.lastReply.author].password;
-                  record.lastReply.author = repliers[record.lastReply.author];
-                }
-              });
-              return res.view({
-                topics: records,
-                pager: {
-                  total: Math.ceil(total/sails.config.weet.limit),
-                  current: page
-                }
-              });
-            });
+    .then(function(topics){
+      var lastReplies = _.pluck(topics, 'lastReply');
+      lastReplies = _.compact(lastReplies);
+      var topicsWithLastReplier = User.find({id: _.pluck(lastReplies, 'author')}).then(function(users){
+        var repliers = _.indexBy(users, 'id');
+        _(topics).forEach(function(topic){
+          if(topic.lastReply) {
+            delete repliers[topic.lastReply.author].password;
+            topic.lastReply.author = repliers[topic.lastReply.author];
           }
         });
-      }
-    });
+        return topics;
+      });
+      return topicsWithLastReplier;
+    }).then(function(topics){
+      var total = Topic.count().then(function(total){
+        return total;
+      });
+      return [total, topics];
+    }).spread(function(total, topics){
+      return res.view({
+        topics: topics,
+        pager: {
+          total: Math.ceil(total/sails.config.weet.limit),
+          current: page
+        }
+      });
+    }).catch(function(err){
+      console.log(err);
+      return res.send(400);
+    })
   },
   show: function (req, res) {
     Topic.findOne({id: req.param('id')})
