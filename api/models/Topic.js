@@ -22,10 +22,6 @@ module.exports = {
       type: 'integer',
       defaultsTo: 0
     },
-    replyCount: {
-      type: 'integer',
-      defaultsTo: 0
-    },
     visitCount: {
       type: 'integer',
       defaultsTo: 0
