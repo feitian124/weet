@@ -9,34 +9,32 @@ module.exports = {
   create: function (req, res) {
     var params = _.merge(req.allParams(), {author: req.user.id});
 
-    Reply.create(params, function(err, reply) {
-      if (err) {
-        console.log(err);
-        req.session.flash = {
-          err: err
-        }
-        return res.redirect('/topic/' + req.param('topic'));
-      }
-
-      reply.save(function(err, reply) {
-        if (err) return next(err);
-
-        // update lastReply of the topic
-        Topic.findOne({id: req.param('topic')})
-        .exec(function(err, topic) {
-          if (err) {
-            console.log(err);
-            return res.send(400);
-          } else {
-            topic.lastReply = reply.id;
-            topic.save(function(err, topic) {
-              if (err) return next(err);
-              res.redirect('/topic/'+ topic.id);
-            });
-          }
-        });
-      })
-    })
+    Reply
+    .create(params)
+    .then(function(reply){
+      var saved = reply.save().then(function(reply){
+        return reply;
+      });
+      return saved;
+    }).then(function(reply){
+      var topic = Topic.findOne({id: req.param('topic')}).then(function(topic){
+        return topic;
+      });
+      return [topic, reply];
+    }).spread(function(topic, reply){
+      topic.lastReply = reply.id;
+      topic.replyCount += 1;
+      var saved = topic.save().then(function(topic){
+        return topic;
+      });
+      return saved;
+    }).then(function(topic){
+      res.redirect('/topic/'+ topic.id);
+    }).catch(function(err){
+      console.log(err);
+      req.session.flash = { err: err }
+      return res.redirect('/topic/' + req.param('topic'));
+    });
   }
 };
 
