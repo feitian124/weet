@@ -1,6 +1,7 @@
 <br/>
 <div class="am-container">
-  <form class="am-form am-form-horizontal">
+  <form action="/user/update" method="post" class="am-form am-form-horizontal">
+    <input type="hidden" name="id" value="<%= user.id %>"/>
     <div class="am-form-group">
       <label for="loginname" class="am-u-sm-2 am-form-label">用户名</label>
       <div class="am-u-sm-10">

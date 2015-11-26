@@ -28,5 +28,20 @@ module.exports = {
     .then(function(user){
       return res.view({ user: user });
     });
-  }
+  },
+  update: function (req, res) {
+    User
+    .findOne({id: req.param('id')})
+    .then(function(user) {
+      user.wechat = req.param('wechat');
+      user.weibo = req.param('weibo');
+      user.avatar = req.param('avatar');
+      user.signature = req.param('signature');
+      return user.save().then(function(user){
+        return user;
+      });
+    }).then(function(user) {
+      res.redirect('/user/'+ user.id);
+    });
+  },
 }
