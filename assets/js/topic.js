@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  var element = document.getElementsByTagName("textarea")[0];
+  var element = document.getElementById("simpleMDE");
   var value = $("#origin_content").val();
 
   if(element) {
