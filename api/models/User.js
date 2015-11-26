@@ -19,10 +19,26 @@ module.exports = {
       required: true,
       unique: true
     },
+    wechat: {
+      type: 'string',
+      defaultsTo: ''
+    },
+    weibo: {
+      type: 'string',
+      defaultsTo: ''
+    },
+    avatar: {
+      type: 'string',
+      defaultsTo: ''
+    },
     password: {
       type: 'string',
       minLength: 6,
       required: true
+    },
+    signature: {
+      type: 'string',
+      defaultsTo: ''
     },
     topics: {
       collection: 'topic',

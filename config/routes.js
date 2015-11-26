@@ -45,6 +45,8 @@ module.exports.routes = {
   'post /topic/update': 'TopicController.update',
   'get /topic/:id': 'TopicController.show',
 
+  'get /user/:id': 'UserController.show',
+
   'get /about': { view: 'about' }
 
   /***************************************************************************

@@ -21,6 +21,12 @@ module.exports = {
         res.redirect('/login');
       })
     })
+  },
+  show: function(req, res, next){
+    User
+    .findOne({id: req.param('id')})
+    .then(function(user){
+      return res.view({ user: user });
+    });
   }
 }
-
