@@ -29,6 +29,13 @@ module.exports = {
       return res.view({ user: user });
     });
   },
+  edit: function(req, res, next){
+    User
+    .findOne({id: req.user.id})
+    .then(function(user){
+      return res.view({ user: user });
+    });
+  },
   update: function (req, res) {
     User
     .findOne({id: req.param('id')})

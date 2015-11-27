@@ -1,0 +1,87 @@
+<br/>
+<div class="am-container">
+  <h2>更改基本信息</h2>
+  <form action="/user/update" method="post" class="am-form am-form-horizontal">
+    <input type="hidden" name="id" value="<%= user.id %>"/>
+    <div class="am-form-group">
+      <label for="loginname" class="am-u-sm-2 am-form-label">用户名</label>
+      <div class="am-u-sm-10">
+        <input type="email" id="loginname" class="am-form-field" value="<%= user.loginname %>" disabled />
+      </div>
+    </div>
+    <div class="am-form-group">
+      <label for="email" class="am-u-sm-2 am-form-label">邮箱</label>
+      <div class="am-u-sm-10">
+        <input type="email" id="email" class="am-form-field" value="<%= user.email %>" disabled />
+      </div>
+    </div>
+
+    <div class="am-form-group">
+      <label for="wechat" class="am-u-sm-2 am-form-label">微信</label>
+      <div class="am-u-sm-10">
+        <input type="text" id="wechat" name="wechat" class="am-form-field" value="<%= user.wechat %>" />
+      </div>
+    </div>
+
+    <div class="am-form-group">
+      <label for="weibo" class="am-u-sm-2 am-form-label">微博</label>
+      <div class="am-u-sm-10">
+        <input type="text" id="weibo" name="weibo" class="am-form-field" value="<%= user.weibo %>" />
+      </div>
+    </div>
+
+    <div class="am-form-group">
+      <label for="avatar" class="am-u-sm-2 am-form-label">头像</label>
+      <div class="am-u-sm-10">
+        <input type="text" id="avatar" name="avatar" class="am-form-field" value="<%= user.avatar %>" />
+      </div>
+    </div>
+
+    <div class="am-form-group">
+      <label for="signature" class="am-u-sm-2 am-form-label">个性签名</label>
+      <div class="am-u-sm-10">
+        <textarea id="signature" rows="3" name="signature" class="am-form-field"><%= user.signature %></textarea>
+      </div>
+    </div>
+
+    <div class="am-form-group">
+      <div class="am-u-sm-10 am-u-sm-offset-2">
+        <button type="submit" class="am-btn am-btn-default">提交</button>
+      </div>
+    </div>
+  </form>
+
+  <hr/>
+
+  <h2>更改密码</h2>
+  <form action="/user/updatePassword" method="post" class="am-form am-form-horizontal">
+    <input type="hidden" name="id" value="<%= user.id %>"/>
+
+    <div class="am-form-group">
+      <label for="password" class="am-u-sm-2 am-form-label">原密码</label>
+      <div class="am-u-sm-10">
+        <input type="password" name="password" id="password" class="am-form-field" />
+      </div>
+    </div>
+
+    <div class="am-form-group">
+      <label for="newPassword" class="am-u-sm-2 am-form-label">新密码</label>
+      <div class="am-u-sm-10">
+        <input type="password" name="newPassword" id="newPassword" class="am-form-field" />
+      </div>
+    </div>
+
+    <div class="am-form-group">
+      <label for="confirmPassword" class="am-u-sm-2 am-form-label">确认新密码</label>
+      <div class="am-u-sm-10">
+        <input type="password" name="confirmPassword" id="confirmPassword" class="am-form-field" />
+      </div>
+    </div>
+
+    <div class="am-form-group">
+      <div class="am-u-sm-10 am-u-sm-offset-2">
+        <button type="submit" class="am-btn am-btn-default">提交</button>
+      </div>
+    </div>
+  </form>
+</div>

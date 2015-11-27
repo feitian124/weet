@@ -41,10 +41,11 @@ module.exports.routes = {
 
   'get /topic/new': { view: 'topic/new' },
   'post /topic/create': 'TopicController.create',
-  'get /topic/:id/edit': 'TopicController.edit',
   'post /topic/update': 'TopicController.update',
+  'get /topic/:id/edit': 'TopicController.edit',
   'get /topic/:id': 'TopicController.show',
 
+  'get /user/edit': 'UserController.edit',
   'get /user/:id': 'UserController.show',
 
   'get /about': { view: 'about' }
