@@ -3,7 +3,7 @@
     <div class="header">
       <div class="am-text-xl"><%= topic.title %></div>
       <div class="am-text-sm">
-        <a href="#"><%= topic.author.loginname %></a> 创建于 <%= fromNow(topic.createdAt) %>
+        <a href="/user/<%= topic.author.id %>"><%= topic.author.loginname %></a> 创建于 <%= fromNow(topic.createdAt) %>
         • <%= topic.visitCount %> 次浏览
         <% if(req.user && topic.author.id === req.user.id ) {%>
           • <a href="/topic/<%= topic.id %>/edit"><span class="am-icon-edit am-icon-sm"></span></a>
@@ -21,16 +21,15 @@
 
 <% _.each(topic.replies, function(reply){ %>
   <article class="am-container am-comment">
-    <a href="">
+    <a href="/user/<%= topic.author.id %>">
       <img class="am-comment-avatar" src="https://ruby-china-files.b0.upaiyun.com/user/big_avatar/1141.jpg"/>
     </a>
 
     <div class="am-comment-main">
       <header class="am-comment-hd">
-        <!--<h3 class="am-comment-title">评论标题</h3>-->
-        <div class="am-comment-meta"> <!-- 评论元数据 -->
-          <a href="#link-to-user" class="am-comment-author">feitian124</a>
-          评论于 <time datetime=""> <%= fromNow(reply.createdAt) %> </time>
+        <div class="am-comment-meta">
+          <a href="/user/<%= reply.author.id %>" class="am-comment-author"><%= reply.author.loginname %></a>
+          评论于 <time datetime="<%= reply.createdAt %>"> <%= fromNow(reply.createdAt) %> </time>
         </div>
       </header>
 

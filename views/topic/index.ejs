@@ -1,14 +1,14 @@
 <% _.each(topics, function(topic){ %>
 <article class="am-g am-g-fixed am-g-collapse topic-list">
   <div class="am-u-sm-1">
-    <a href="#">
+    <a href="/user/<%= topic.author.id %>">
       <img class="am-comment-avatar" src="https://ruby-china-files.b0.upaiyun.com/user/big_avatar/1141.jpg"/>
     </a>
   </div>
   <div class="am-u-sm-10">
     <div class="am-text-lg title"><a href="/topic/<%= topic.id %>"><%= topic.title %></a></div>
     <div class="am-text-sm meta">
-      <a href="#"><%= topic.author.loginname %></a>
+      <a href="/user/<%= topic.author.id %>"><%= topic.author.loginname %></a>
       <% if(topic.lastReply) { %>
         • 最后回复 
         <a href="/user/<%= topic.lastReply.author.id %>"><%= topic.lastReply.author.loginname %></a>
