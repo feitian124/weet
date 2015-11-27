@@ -52,13 +52,18 @@ module.exports = {
   show: function (req, res) {
     Topic.findOne({id: req.param('id')})
     .populate('author')
-    .populate('replies', {sort: 'id DESC'})
     .then(function(topic){
       topic.visitCount += 1;
       var saved = topic.save().then(function(topic){
         return topic;
       });
       return saved;
+    }).then(function(topic){
+      var topicWithReplies = Reply.find({topic: topic.id, sort: 'id DESC'}).populate('author').then(function(replies){
+        topic.replies = replies;
+        return topic;
+      });
+      return topicWithReplies;
     }).then(function(topic){
       return res.view({
         topic: topic
