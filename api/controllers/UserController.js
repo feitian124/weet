@@ -36,6 +36,24 @@ module.exports = {
       return res.view({ user: user });
     });
   },
+  updatePassword: function(req, res, next) {
+    var password = req.param('password');
+    var newPassword = req.param('newPassword');
+    User
+    .findOne({id: req.param('id')})
+    .then(function(user) {
+      if(user.checkPassword(password)) {
+        user.password = User.getPassword(newPassword);
+        return user.save().then(function(user){
+          res.redirect('/user/edit');
+          return user;
+        });
+      } else {
+        req.session.flash = { err: '原密码不正确!' };
+        res.redirect('/user/edit');
+      }
+    });
+  },
   update: function (req, res) {
     User
     .findOne({id: req.param('id')})

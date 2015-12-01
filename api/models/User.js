@@ -48,11 +48,17 @@ module.exports = {
       collection: 'reply',
       via: 'author'
     },
+    checkPassword: function(password) {
+      return bcrypt.compareSync(password, this.password);
+    },
     toJSON: function() {
       var obj = this.toObject();
       delete obj.password;
       return obj;
     }
+  },
+  getPassword: function(password) {
+    return bcrypt.hashSync(password, 10);
   },
   beforeCreate: function(user, cb) {
     bcrypt.genSalt(10, function(err, salt) {
