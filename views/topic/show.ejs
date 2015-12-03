@@ -1,5 +1,5 @@
-<div class="am-g am-g-fixed am-g-collapse">
-  <div class="am-u-sm-12 topic">
+<div class="am-container">
+  <div class="topic">
     <div class="header">
       <div class="am-text-xl"><%= topic.title %></div>
       <div class="am-text-sm">
@@ -11,34 +11,33 @@
         <% } %>
       </div>
     </div>
-
     <div class="body">
       <%- markdown(topic.content) %>
     </div>
   </div>
-</div>
-<br/>
 
-<% _.each(topic.replies, function(reply){ %>
-  <article class="am-container am-comment">
-    <a href="/user/<%= topic.author.id %>">
-      <img class="am-comment-avatar" src="https://ruby-china-files.b0.upaiyun.com/user/big_avatar/1141.jpg"/>
-    </a>
+  <ul class="am-comments-list">
+  <% _.each(topic.replies, function(reply){ %>
+    <li class="am-comment">
+      <a href="/user/<%= topic.author.id %>">
+        <img class="am-comment-avatar" src="https://ruby-china-files.b0.upaiyun.com/user/big_avatar/1141.jpg"/>
+      </a>
 
-    <div class="am-comment-main">
-      <header class="am-comment-hd">
-        <div class="am-comment-meta">
-          <a href="/user/<%= reply.author.id %>" class="am-comment-author"><%= reply.author.loginname %></a>
-          评论于 <time datetime="<%= reply.createdAt %>"> <%= fromNow(reply.createdAt) %> </time>
-        </div>
-      </header>
+      <div class="am-comment-main">
+        <header class="am-comment-hd">
+          <div class="am-comment-meta">
+            <a href="/user/<%= reply.author.id %>" class="am-comment-author"><%= reply.author.loginname %></a>
+            评论于 <time datetime="<%= reply.createdAt %>"> <%= fromNow(reply.createdAt) %> </time>
+          </div>
+        </header>
 
-      <div class="am-comment-bd"><%= reply.content %></div>
-    </div>
-  </article>
-<% }); %>
+        <div class="am-comment-bd"><%= reply.content %></div>
+      </div>
+    </li>
+  <% }); %>
+  </ul>
 
-<% if(req.isAuthenticated()) {%>
+  <% if(req.isAuthenticated()) {%>
   <div class="am-container">
     <form class="am-form" action='/reply/create' method='post'>
         <input type="hidden" name="topic" value="<%= topic.id %>"/>
@@ -50,6 +49,7 @@
         <p><button type="submit" class="am-btn am-btn-primary">提交</button></p>
     </form>
   </div>
-<% } %>
+  <% } %>
 
+</div>
 <br/>
