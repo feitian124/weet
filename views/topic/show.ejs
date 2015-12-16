@@ -6,8 +6,8 @@
         <a href="/user/<%= topic.author.id %>"><%= topic.author.loginname %></a> 创建于 <%= fromNow(topic.createdAt) %>
         • <%= topic.visitCount %> 次浏览
         <% if(req.user && topic.author.id === req.user.id ) {%>
-          • <a href="/topic/<%= topic.id %>/edit"><span class="am-icon-edit am-icon-sm"></span></a>
-          • <a href="#" class="delete"><span class="am-icon-trash am-icon-sm"></span></a>
+        • &nbsp; <a href="/topic/<%= topic.id %>/edit"><span class="am-icon-edit am-icon-sm"></span></a>
+          &nbsp; <a href="#" data-id="<%= topic.id %>" class="delete"><span class="am-icon-trash am-icon-sm"></span></a>
         <% } %>
       </div>
     </div>
