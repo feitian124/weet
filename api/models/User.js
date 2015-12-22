@@ -29,7 +29,7 @@ module.exports = {
     },
     avatar: {
       type: 'string',
-      defaultsTo: ''
+      defaultsTo: '/images/avatar.png'
     },
     password: {
       type: 'string',

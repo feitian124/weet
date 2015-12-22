@@ -20,7 +20,7 @@
   <% _.each(topic.replies, function(reply){ %>
     <li class="am-comment">
       <a href="/user/<%= topic.author.id %>">
-        <img class="am-comment-avatar" src="https://ruby-china-files.b0.upaiyun.com/user/big_avatar/1141.jpg"/>
+        <img class="am-comment-avatar" src="<%= topic.author.avatar %>"/>
       </a>
 
       <div class="am-comment-main">
